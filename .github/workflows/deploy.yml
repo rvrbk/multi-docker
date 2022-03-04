@@ -14,6 +14,12 @@ jobs:
       - run: docker build -t rvrbk/multi-nginx ./nginx
       - run: docker build -t rvrbk/multi-server ./server
       - run: docker build -t rvrbk/multi-worker ./worker
+      
+      - run: docker push rvrbk/multi-client
+      - run: docker push rvrbk/multi-nginx
+      - run: docker push rvrbk/multi-server
+      - run: docker push rvrbk/multi-worker
+
       #- run: docker build -t rvrbk/react-test -f Dockerfile.dev .
       #- run: docker run -e CI=true rvrbk/react-test npm test
       - name: deploy package
