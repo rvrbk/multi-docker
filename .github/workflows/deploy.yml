@@ -20,8 +20,6 @@ jobs:
       - run: docker push rvrbk/multi-server
       - run: docker push rvrbk/multi-worker
 
-      #- run: docker build -t rvrbk/react-test -f Dockerfile.dev .
-      #- run: docker run -e CI=true rvrbk/react-test npm test
       - name: deploy package
         run: zip -r deploy.zip . -x '*.git*'
       - name: beanstalk
@@ -29,8 +27,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: docker-react
-          environment_name: Dockerreact-env
+          application_name: multi-docker
+          environment_name: Multidocker-env
           existing_bucket_name: elasticbeanstalk-us-east-1-252439019993
           region: us-east-1
           version_label: ${{ github.sha }}
